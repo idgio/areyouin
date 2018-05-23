@@ -1,0 +1,20 @@
+{
+  "name": "are-you-in-for",
+  "version": "0.1.0",
+  "private": true,
+  "dependencies": {
+    "firebase": "^5.0.1",
+    "react": "^16.3.2",
+    "react-browser-notifications": "^1.0.14",
+    "react-dom": "^16.3.2",
+    "react-number-format": "^3.3.4",
+    "react-scripts": "1.1.4",
+    "react-text-mask": "^5.4.1"
+  },
+  "scripts": {
+    "start": "react-scripts start",
+    "build": "react-scripts build",
+    "test": "react-scripts test --env=jsdom",
+    "eject": "react-scripts eject"
+  }
+}

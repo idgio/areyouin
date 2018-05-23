@@ -1,0 +1,18 @@
+body {
+    display: block;
+    
+}
+.btnFloatBottomRight
+{
+    position: fixed !important;
+    bottom: 5%;
+    right: 5%;
+}
+.wrapper, .foodieBody
+{
+    margin: 8px;
+}
+.bntDetails
+{
+        margin: 0 4px;
+}
