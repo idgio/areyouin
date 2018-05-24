@@ -40,6 +40,7 @@ const styles = theme => ({
     position: 'fixed',
     bottom: 0,
     paddingBottom: 20,
+    paddingLeft: 20,
     backgroundColor: '#efefef'
   },
   formControl: {
@@ -158,7 +159,7 @@ class FullScreenDialog extends React.Component {
   render() {
     const { classes } = this.props;
     const { newFooderCost, newFooderWants } = this.state;
-    
+    let tot = 0
     return (
       <div>
         <Button size="small" variant="raised" onClick={this.handleClickOpen} className={classes.btnDetails}>See details</Button>
@@ -188,7 +189,9 @@ class FullScreenDialog extends React.Component {
           <List>
             
             {
+                  
                   this.fooders.slice(0).reverse().map((fooder) => {
+                    tot += Number(fooder.cost)
                     return (
                       <div key={fooder.id} >
                         <ListItem button>
@@ -214,7 +217,9 @@ class FullScreenDialog extends React.Component {
                   
             }
           </List>
+          
           <div className={classes.root}>
+            Current total: ${tot.toFixed(2)}
             <FormControl   className={classes.formControl}>
                   <FormGroup className={classes.formGroup}>
                       <TextField

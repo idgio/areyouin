@@ -13,6 +13,34 @@ import FormControl from '@material-ui/core/FormControl';
 import FormGroup from '@material-ui/core/FormGroup';
 import FormControlLabel from '@material-ui/core/FormControlLabel';
 
+import NumberFormat from 'react-number-format';
+import PropTypes from 'prop-types';
+
+function NumberFormatCustom(props) {
+  const { inputRef, onChange, ...other } = props;
+
+  return (
+    <NumberFormat
+      {...other}
+      ref={inputRef}
+      onValueChange={values => {
+        onChange({
+          target: {
+            value: values.value,
+          },
+        });
+      }}
+      thousandSeparator
+      prefix="$"
+    />
+  );
+}
+
+NumberFormatCustom.propTypes = {
+  inputRef: PropTypes.func.isRequired,
+  onChange: PropTypes.func.isRequired,
+};
+
 export default class FormDialog extends React.Component {
     
  constructor(props){
@@ -66,7 +94,7 @@ export default class FormDialog extends React.Component {
           onClose={this.handleClose}
           aria-labelledby="form-dialog-title"
         >
-          <DialogTitle id="form-dialog-title">New FoddieRequest</DialogTitle>
+          <DialogTitle id="form-dialog-title">New FoodieRequest</DialogTitle>
           <DialogContent>
             <DialogContentText>
               To create a new FoodieRequest please fill the following.
@@ -108,6 +136,9 @@ export default class FormDialog extends React.Component {
                       helperText="Optional"
                       value={this.state.newFoodieMinRange}
                       onChange = {this.handleUserInput('newFoodieMinRange')}
+                      InputProps={{
+                          inputComponent: NumberFormatCustom,
+                        }}
                     />
                 </FormGroup>
                 <FormGroup>
@@ -121,6 +152,9 @@ export default class FormDialog extends React.Component {
                       helperText="Optional"
                       value={this.state.newFoodieMaxRange}
                       onChange = {this.handleUserInput('newFoodieMaxRange')}
+                      InputProps={{
+                          inputComponent: NumberFormatCustom,
+                        }}
                     />
                 </FormGroup>
                 <FormGroup>
